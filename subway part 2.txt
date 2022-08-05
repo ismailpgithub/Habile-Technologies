@@ -1,0 +1,140 @@
+package subWay;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Menu {
+
+	Scanner scan = new Scanner(System.in);
+	List <String> l = new ArrayList<String>(); 
+	int sum1=0;
+	int sum2=0;
+	int sum3=0;
+	int toppingsnumber;
+	public int  home(){
+		System.out.println("Welcome to Subway: ");
+		System.out.println("  1) Order ‘Sub’ off the day");
+		System.out.println("  2) Order your own ‘Sub’");
+		System.out.println("  3) Exit");
+		int ch = scan.nextInt();
+		return ch;
+	}
+	public String crust(){
+		System.out.println("Select “Crust” (max of 1)");
+	    
+		String hard = " Hard - 10 ₹";
+		int hardprice=10;
+		String thin = " Thin - 10 ₹";
+		int thinprice=10;
+		String soft = " Soft - 12 ₹";
+		int softprice=12;
+		System.out.println("1)"+hard);
+		System.out.println("2)"+thin);
+		System.out.println("3)"+soft);
+		int add = scan.nextInt();
+		if(add==1){
+			l.add("crust -"+hard);
+			sum1=hardprice;
+		}
+		else if(add == 2){
+			l.add("crust -"+thin);
+			sum1=thinprice;
+		}
+		else if(add == 3){
+			l.add("crust -"+soft);
+			sum1=softprice;
+		}
+		else
+			return "Invalid input";
+		return "";
+	}
+	public String filling(){
+		System.out.println("Select “Filling” (max of 1)");
+		
+		String chicken = " Chicken Tikka - 120 ₹";
+		int chickenprice=120;
+		String paneer  = " Paneer Tikka  - 100 ₹";
+		int paneerprice=100;
+		String Meat    = " Turkey Meat   - 130 ₹";
+		int Meatprice=130;
+		System.out.println("1)"+chicken);
+		System.out.println("2)"+paneer);
+		System.out.println("3)"+Meat);
+		int add = scan.nextInt();
+		if(add==1){
+			l.add("filling -"+chicken);
+			sum2=chickenprice;
+		}
+		else if(add==2){
+			l.add("filling -"+paneer);
+			sum2=paneerprice;
+		}
+		else if(add == 3){
+			l.add("filling -"+Meat);
+			sum2=Meatprice;
+		}
+		else
+			return "Invalid Input";
+		return "";
+	}
+	public String Toppings(){
+		System.out.println("Select “Toppings” (max of 3)");
+		
+		System.out.println("select number of toppings");
+		toppingsnumber = scan.nextInt();
+		String cucumber = " Cucumber   - 25 ₹";
+		int cucumberprice=25;
+		String tomato   = " Tomato     - 20 ₹";
+		int tomatoprice=20;
+		String meat     = " Meat strip - 45 ₹";
+		int meatprice=45;
+		String cabbage  = " Cabbage    - 20 ₹";
+		int cabbageprice=20;
+		
+		for(int i=1;i<=toppingsnumber;i++){
+			dis();
+			int add = scan.nextInt();
+			if(add==1){
+				l.add("Topping -"+cucumber);
+				sum3=sum3+cucumberprice;
+			}else if(add==2){
+				l.add("Topping -"+tomato);
+				sum3=sum3+tomatoprice;
+			}else if(add==3){
+				l.add("Topping -"+meat);
+				sum3=sum3+meatprice;
+			}else if(add==4){
+				l.add("Topping -"+cabbage);
+				sum3=sum3+cabbageprice;
+			}else{
+				return "Invalid input";
+			}
+		}
+		return "";
+	}
+	public void invoice(){
+
+		for(int i=0;i<2;i++){
+			System.out.println(l.get(i));
+		}
+		for(int i=2;i<l.size();i++){
+			System.out.println(l.get(i));
+		}
+	}
+	public String total(){
+		System.out.println("Total   -  "+(sum1+sum2+sum3)+" ₹");
+		System.out.println();
+		System.out.println("Enter yes to confirm");
+		scan.nextLine();
+		String con = scan.nextLine();
+		return con;
+	}
+
+	public void dis(){
+		System.out.println("1)"+" Cucumber   - 25 ₹");
+		System.out.println("2)"+" Tomato     - 20 ₹");
+		System.out.println("3)"+" Meat strip - 45 ₹");
+		System.out.println("4)"+" Cabbage    - 20 ₹");
+	}
+}

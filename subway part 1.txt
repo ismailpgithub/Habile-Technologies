@@ -1,0 +1,76 @@
+package subWay;
+
+import java.util.Scanner;
+
+public class subWay {
+
+	static Scanner scan = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		
+		Menu m = new Menu();
+		int ch =m.home();
+	
+		switch(ch) {
+		  case 1:
+			 String con= subOffDay();
+			 if(con.equalsIgnoreCase("yes"))
+				 System.out.println("Your subway order is placed for 200 ₹.");
+			 else{
+				 System.out.println("Invalid input");
+				 m.home();
+			 }
+		    break;
+		  case 2:
+		    // code block
+			  String res =  m.crust();
+			  System.out.println(res);
+			  if(res.equalsIgnoreCase("invalid input")){
+				  m.crust();
+			  }
+			  else{
+				 String res1 = m.filling();
+				 System.out.println(res1);
+				 if(res1.equalsIgnoreCase("invalid input")){
+					 m.filling();
+				 }
+				 else{
+					 String res2 = m.Toppings();
+					 System.out.println(res2);
+					 if(res2.equalsIgnoreCase("invalid input"))
+					 	m.Toppings();
+					 else{
+						 m.invoice();
+						String con1 = m.total();
+						if(con1.equalsIgnoreCase("yes")){
+							 System.out.println("Your subway order is placed for "+((m.sum1)+(m.sum2)+(m.sum3))+" ₹.");
+						}
+					 }
+					 
+				 }
+			  }
+			  
+		    break;
+		  case 3:
+			  System.exit(0);
+			break;			  
+		  default:
+			  System.out.println("Invalid case");
+		  }
+		}
+		
+		public static String subOffDay(){
+			System.out.println("Crust - Hard            - 10 ₹");
+			System.out.println("Filling - Chicken Tikka - 120 ₹");
+			System.out.println("Topping - Cucumber      - 25 ₹");
+			System.out.println("Topping - Meat Strip    - 45 ₹");
+			System.out.println("Topping - Cabbage       - 0 ₹");
+			System.out.println();
+			System.out.println("Total                   - 200 ₹");
+			System.out.println();
+			System.out.println("Enter yes to conform");
+			String c = scan.nextLine();
+			return c;
+		}
+
+}
